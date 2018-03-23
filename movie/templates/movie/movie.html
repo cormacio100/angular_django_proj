@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+{% block content %}
+    {% if message %}
+        {{ message }}
+    {% endif %}
+    <div class="container contents">
+        <div class="row">
+            <div class="col-sm-3">&nbsp;</div>
+            <div class="col-sm-6 centered title">
+                <h1>Todo's for {{ username|title}}</h1>
+            </div>
+            <div class="col-sm-3">
+                &nbsp;
+            </div>
+        </div>
+        <div id="pagination" class="row">
+            <div class="col-sm-3"><button id="create-todo-btn" type="button" class="btn btn-primary btn-large btn-block" data-toggle="modal" data-target="#todo-modal">Create Todo<span id="user_id" hidden>{{ user_id }}</span></button></div>
+            <div class="col-sm-6 centered"><p>Page: <span id="page_links"></span><br><span id="record_count"></span></p></div>
+            <div class="col-sm-3">
+                <p>
+                    Sort by Status:&nbsp;
+                    <select id="choose_status" class="select-menu">
+                        <option value="All">All</option>
+                        <option value="Todo">Todo</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </p></div>
+        </div>
+        <div class="row">
+            <div id="REST-data" class="col-sm-12" ></div>
+        </div>
+
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'js/globals.js' %}"></script>
+    <script src="{% static 'js/talk_to_api.js' %}"></script>
+    <script src="{% static 'js/list_todos.js' %}"></script>
+{% endblock %}
