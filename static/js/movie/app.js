@@ -1,20 +1,16 @@
-angular.module('movieApp',['ngRoute','movieControllers']);
-
-angular.module('movieApp').config(function($routeProvider){
-$routeProvider
-    .when('/movie/:movideId',{
-        templateUrl: 'http://127.0.0.1:8000/static/js/movie/partials/movide_details.html',
-            controller: 'movieController'
-        });
-    }
-);
-
-/**
- *  Need to add the following for routes to work
- *  with Django (CSRF workaroud for RESTFUL reequests)
- */
-angular.module('movieApp').config([
-'$httpProvider', function($httpProvider){
+angular.module('movieApp',[
+    'ngRoute',
+    'movieModule'
+]).config(function($routeProvider){
+    $routeProvider.when('/movie/:movieId',{
+        templateUrl: 'http://127.0.0.1:8000/static/js/movie/partials/movie_details.html',
+        controller: 'movieDetailsController'
+    });
+}).config(['$httpProvider', function($httpProvider){
+    /**
+     *  Need to add the following for routes to work
+     *  with Django (CSRF workaroud for RESTFUL reequests)
+     */
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     }
