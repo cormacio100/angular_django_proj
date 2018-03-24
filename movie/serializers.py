@@ -6,5 +6,5 @@ class MovieSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Movie
         #   fields to expose
-        fields = ('title','id','genre')
+        fields = ('title','id','theatreReleaseDate','genre')
 

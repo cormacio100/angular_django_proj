@@ -35,11 +35,3 @@ class MovieViewSet(viewsets.ModelViewSet):
         #   This insures that only they will be able to edit
         #   movies that are added (on the same login)
         obj.owner = self.request.user
-
-
-
-        """
-         *  TO DO CREATE A PERMISSIONS FILE
-         *  Stopped at 24.48
-         */
-        """
